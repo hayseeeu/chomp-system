@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteHeader } from "@/components/site/site-header";
+import { StickyChompBar } from "@/components/site/sticky-chomp-bar";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
@@ -49,7 +50,10 @@ export default function Home() {
         {/* ---- hero ------------------------------------------------------- */}
         <section className="mx-auto grid max-w-[1440px] items-center gap-12 px-6 pt-16 pb-14 sm:px-10 lg:grid-cols-[1fr_440px] lg:pt-20 lg:pb-16">
           <div>
-            <p className="mb-6 font-mono text-[11px] font-semibold tracking-[0.14em] text-muted-foreground uppercase">
+            {/* Tight tracking on phone is what keeps this on one line at
+                390px — the spec's 0.14em only fits once sm: gives it more
+                width to work with. */}
+            <p className="mb-6 font-mono text-[11px] font-semibold tracking-[0.02em] text-muted-foreground uppercase sm:tracking-[0.14em]">
               Pomodoro for brains that stall at the start line
             </p>
             <h1 className="-ml-[0.05em] font-display text-[clamp(56px,10vw,132px)] leading-[0.82] tracking-[-0.06em] text-foreground uppercase">
@@ -80,6 +84,10 @@ export default function Home() {
                 See the quiet screen →
               </Link>
             </div>
+
+            {/* Phone only — pins "Chomp it" to the bottom of the viewport
+                once this row scrolls out of view. */}
+            <StickyChompBar />
           </div>
 
           <div className="flex h-[280px] items-center justify-center lg:h-[440px]">
@@ -135,7 +143,14 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-6 border-t-2 border-foreground px-6 py-7 sm:px-10">
+      {/* No top border on phone — the sticky CTA bar's own border-top sits
+          just below this row and a second rule right above it read as a
+          cramped double line. Extra bottom padding keeps the sticky bar
+          from ever sitting flush over the content.
+          Below sm: this is a tight column stack (gap-2.5 = the spec's
+          10px), not a wrapped row — flex-wrap with the desktop gap-6 left
+          an oversized, uneven-looking gap between the two lines. */}
+      <footer className="mx-auto flex max-w-[1440px] flex-col items-center gap-2.5 border-foreground px-6 pt-7 pb-28 text-center sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-6 sm:border-t-2 sm:px-10 sm:py-7 sm:text-left">
         <span className="font-mono text-[11px] font-semibold tracking-[0.14em] text-muted-foreground uppercase">
           Free · no account · no tracking
         </span>

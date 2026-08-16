@@ -109,8 +109,10 @@ export function IdleScreen({
           </button>
 
           {/* Fixed to the bottom under 640px so the one thing that matters is
-            always in thumb reach. */}
-          <div className="fixed inset-x-5 bottom-[max(20px,env(safe-area-inset-bottom))] z-10 sm:static sm:inset-auto">
+            always in thumb reach. z-30 keeps it clear of anything else in
+            this screen's stacking order; the extra safe-area clearance keeps
+            it out of the OS gesture strip on notch-less devices. */}
+          <div className="fixed inset-x-5 bottom-[max(24px,env(safe-area-inset-bottom))] z-30 sm:static sm:inset-auto">
             <Button variant="slam" size="slam" onClick={onStart}>
               Chomp it
             </Button>

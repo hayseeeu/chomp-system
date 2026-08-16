@@ -1,0 +1,353 @@
+/* ============================================================================
+   CHOMP — app/globals.css
+   Tailwind v4 + shadcn/ui (base-nova). Palette A "Hazard" is the default.
+
+   NOTE ON THE TOKENS: the handoff bundle's globals.css shipped Palette A as
+   shadcn's neutral greys, with the intended hex only in a comment beside each
+   token — so Hazard never actually rendered. The values here are rebuilt from
+   README.md's token table.
+
+   The oklch column in that table also does not round-trip to its own hex
+   column (its cream resolves to #FAF3E2, its acid to #FDE641). The hexes are
+   what the reference document paints with, so the hexes win: every value
+   below is computed from the hex and converts back to it exactly.
+   ========================================================================= */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* ---- Hazard, light. The app ships in .dark; this is the coherent inverse.
+     cream #FFF5E1 · ink #1A1A1A · acid #FFEA4D · riot #FF3B6F ------------ */
+  --background: oklch(0.9727 0.0284 84.6); /* cream  #FFF5E1 */
+  --foreground: oklch(0.2178 0 0); /* ink    #1A1A1A */
+  --card: oklch(0.986 0.014 84.6); /* paper          */
+  --card-foreground: oklch(0.2178 0 0);
+  --popover: oklch(0.9727 0.0284 84.6);
+  --popover-foreground: oklch(0.2178 0 0);
+  --primary: oklch(0.9275 0.1697 101.5); /* acid   #FFEA4D */
+  --primary-foreground: oklch(0.2178 0 0); /* ink on acid    */
+  --secondary: oklch(0.6639 0.2296 11.3); /* riot   #FF3B6F */
+  --secondary-foreground: oklch(0.2178 0 0); /* ink on riot — 5.1:1 */
+  --muted: oklch(0.928 0.026 84.6);
+  --muted-foreground: oklch(0.44 0.012 86.5); /* solid tint, never alpha */
+  --accent: oklch(0.928 0.026 84.6);
+  --accent-foreground: oklch(0.2178 0 0);
+  --destructive: oklch(0.6639 0.2296 11.3); /* riot           */
+  --destructive-foreground: oklch(0.2178 0 0);
+  --border: oklch(0.2178 0 0);
+  --input: oklch(0.2178 0 0);
+  --ring: oklch(0.6639 0.2296 11.3); /* acid is illegible on cream */
+
+  --radius: 0rem;
+
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-archivo-black), var(--font-archivo), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  /* Hard offset shadows. No blur, ever. The shadow is always the OPPOSITE
+     accent: acid casts riot, riot casts acid, neutrals cast acid. */
+  --shadow-slab-sm: 3px 3px 0 0 var(--secondary);
+  --shadow-slab: 5px 5px 0 0 var(--secondary);
+  --shadow-slab-lg: 12px 12px 0 0 var(--secondary);
+  --shadow-slab-alt: 5px 5px 0 0 var(--primary);
+
+  --chart-1: oklch(0.9275 0.1697 101.5);
+  --chart-2: oklch(0.6639 0.2296 11.3);
+  --chart-3: oklch(0.2178 0 0);
+  --chart-4: oklch(0.6412 0.0171 86.5);
+  --chart-5: oklch(0.286 0.0061 78.2);
+  --sidebar: oklch(0.9727 0.0284 84.6);
+  --sidebar-foreground: oklch(0.2178 0 0);
+  --sidebar-primary: oklch(0.9275 0.1697 101.5);
+  --sidebar-primary-foreground: oklch(0.2178 0 0);
+  --sidebar-accent: oklch(0.928 0.026 84.6);
+  --sidebar-accent-foreground: oklch(0.2178 0 0);
+  --sidebar-border: oklch(0.2178 0 0);
+  --sidebar-ring: oklch(0.6639 0.2296 11.3);
+}
+
+.dark {
+  /* Hazard — dark. THIS IS THE PRIMARY MODE. Ship the app in .dark. */
+  --background: oklch(0.2178 0 0); /* ink    #1A1A1A */
+  --foreground: oklch(0.9727 0.0284 84.6); /* cream  #FFF5E1 */
+  --card: oklch(0.286 0.0061 78.2); /* soot   #2C2A27 */
+  --card-foreground: oklch(0.9727 0.0284 84.6);
+  --popover: oklch(0.2178 0 0); /* dialogs are ink */
+  --popover-foreground: oklch(0.9727 0.0284 84.6);
+  --primary: oklch(0.9275 0.1697 101.5); /* acid   #FFEA4D */
+  --primary-foreground: oklch(0.2178 0 0); /* ink on acid    */
+  --secondary: oklch(0.6639 0.2296 11.3); /* riot   #FF3B6F */
+  --secondary-foreground: oklch(0.2178 0 0); /* ink on riot, not cream */
+  --muted: oklch(0.286 0.0061 78.2); /* soot           */
+  --muted-foreground: oklch(0.6412 0.0171 86.5); /* #918C81 · 5.0:1 */
+  --accent: oklch(0.286 0.0061 78.2);
+  --accent-foreground: oklch(0.9727 0.0284 84.6);
+  --destructive: oklch(0.6639 0.2296 11.3); /* riot           */
+  --destructive-foreground: oklch(0.2178 0 0);
+  --border: oklch(0.9727 0.0284 84.6); /* cream          */
+  --input: oklch(0.9727 0.0284 84.6);
+  --ring: oklch(0.9275 0.1697 101.5); /* acid           */
+
+  --chart-1: oklch(0.9275 0.1697 101.5);
+  --chart-2: oklch(0.6639 0.2296 11.3);
+  --chart-3: oklch(0.9727 0.0284 84.6);
+  --chart-4: oklch(0.6412 0.0171 86.5);
+  --chart-5: oklch(0.286 0.0061 78.2);
+  --sidebar: oklch(0.2178 0 0);
+  --sidebar-foreground: oklch(0.9727 0.0284 84.6);
+  --sidebar-primary: oklch(0.9275 0.1697 101.5);
+  --sidebar-primary-foreground: oklch(0.2178 0 0);
+  --sidebar-accent: oklch(0.286 0.0061 78.2);
+  --sidebar-accent-foreground: oklch(0.9727 0.0284 84.6);
+  --sidebar-border: oklch(0.9727 0.0284 84.6);
+  --sidebar-ring: oklch(0.9275 0.1697 101.5);
+}
+
+/* ---------------------------------------------------------------------------
+   Palette B "Solvent" — same token names, two hues moved.
+   Set data-palette="solvent" on <html> to A/B without a rebuild.
+   ------------------------------------------------------------------------ */
+
+[data-palette="solvent"] {
+  --background: oklch(0.952 0.0124 91.5); /* bone   #F2EFE6 */
+  --foreground: oklch(0.1822 0 0); /* pitch  #121212 */
+  --card: oklch(0.98 0.008 92.5);
+  --card-foreground: oklch(0.1822 0 0);
+  --popover: oklch(0.952 0.0124 91.5);
+  --popover-foreground: oklch(0.1822 0 0);
+  --primary: oklch(0.92 0.2223 128.3); /* slime  #B8FF3D */
+  --primary-foreground: oklch(0.1822 0 0);
+  --secondary: oklch(0.5768 0.247 287.6); /* volt   #7A4DFF */
+  --secondary-foreground: oklch(1 0 0); /* white on volt — 4.85:1 */
+  --muted: oklch(0.91 0.01 92.5);
+  --muted-foreground: oklch(0.43 0.008 92.5);
+  --accent: oklch(0.91 0.01 92.5);
+  --accent-foreground: oklch(0.1822 0 0);
+  --destructive: oklch(0.5768 0.247 287.6);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.1822 0 0);
+  --input: oklch(0.1822 0 0);
+  --ring: oklch(0.5768 0.247 287.6);
+}
+
+.dark[data-palette="solvent"],
+[data-palette="solvent"] .dark {
+  --background: oklch(0.1822 0 0); /* pitch  #121212 */
+  --foreground: oklch(0.952 0.0124 91.5); /* bone   #F2EFE6 */
+  --card: oklch(0.2603 0 0); /* carbon #242424 */
+  --card-foreground: oklch(0.952 0.0124 91.5);
+  --popover: oklch(0.1822 0 0);
+  --popover-foreground: oklch(0.952 0.0124 91.5);
+  --muted: oklch(0.2603 0 0);
+  --muted-foreground: oklch(0.63 0.008 92.5);
+  --accent: oklch(0.2603 0 0);
+  --accent-foreground: oklch(0.952 0.0124 91.5);
+  --border: oklch(0.952 0.0124 91.5);
+  --input: oklch(0.952 0.0124 91.5);
+  --ring: oklch(0.92 0.2223 128.3); /* slime */
+}
+
+/* ------------------------------------------------------------------------ */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-sans);
+
+  /* Zero radius is not negotiable — every size resolves to 0. */
+  --radius-xs: 0rem;
+  --radius-sm: 0rem;
+  --radius-md: 0rem;
+  --radius-lg: 0rem;
+  --radius-xl: 0rem;
+  --radius-2xl: 0rem;
+  --radius-3xl: 0rem;
+  --radius-4xl: 0rem;
+  --radius-full: 9999px; /* circles only: stickers, avatars */
+
+  --shadow-slab-sm: var(--shadow-slab-sm);
+  --shadow-slab: var(--shadow-slab);
+  --shadow-slab-lg: var(--shadow-slab-lg);
+  --shadow-slab-alt: var(--shadow-slab-alt);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+  /* Every countdown, stat and data label is tabular so digits never re-flow. */
+  .font-mono,
+  [class*="font-mono"] {
+    font-variant-numeric: tabular-nums;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+@layer utilities {
+  /* Display type. line-height 0.82, tracking -0.06em, always uppercase. */
+  .type-display-1 {
+    font-family: var(--font-display);
+    font-size: clamp(72px, 20vw, 292px);
+    line-height: 0.82;
+    letter-spacing: -0.06em;
+    text-transform: uppercase;
+  }
+  .type-display-2 {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 7vw, 88px);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+  }
+  /* Outlined display type. Never combine with a fill in the same lockup. */
+  .type-display-stroke {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--foreground);
+  }
+  .type-timer {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: clamp(72px, 12vw, 132px);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums;
+  }
+  .type-h3 {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .type-body-lg {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .type-nav {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .type-label {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .type-mono-xs {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 11px; /* absolute floor — never smaller */
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* Slab physics. Rest at the given offset, hover lifts -3px and grows,
+     active presses flush into its own shadow. 90ms ease-out, nothing else. */
+  .slab {
+    transition-property: transform, box-shadow;
+    transition-duration: 90ms;
+    transition-timing-function: ease-out;
+  }
+}
+
+/* Marquee. Duplicate the track twice in markup and translate -50%. */
+@keyframes chomp-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Sticker slam: 1.4 -> 1 over 140ms, rotation held throughout. The rotation
+   is passed in as --sticker-rotate so it survives the scale animation. */
+@keyframes chomp-slam {
+  from {
+    transform: rotate(var(--sticker-rotate, -12deg)) scale(1.4);
+  }
+  to {
+    transform: rotate(var(--sticker-rotate, -12deg)) scale(1);
+  }
+}
+
+/* Toast: 120ms hard slide from the left. No fade — opacity never animates. */
+@keyframes chomp-slide-in-left {
+  from {
+    transform: translateX(-110%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Kills the marquee, the sticker slam and the number roll.
+     The done-state colour flood STAYS — it's a state change, not decoration. */
+  *,
+  *::before,
+  *::after {
+    /* biome-ignore-start lint/complexity/noImportantStyles: a reduced-motion
+       override has to beat every utility that set the duration. */
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    /* biome-ignore-end lint/complexity/noImportantStyles: as above */
+  }
+}

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, Archivo_Black, JetBrains_Mono } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
@@ -37,9 +38,12 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    // dark is the primary mode — the app ships in it.
+    // "dark" here is only the no-JS/pre-hydration fallback — next-themes'
+    // blocking script overwrites it before paint. suppressHydrationWarning
+    // is required because that script mutates this element outside React.
     <html
       lang="en"
+      suppressHydrationWarning
       className={cn(
         "dark h-full",
         archivo.variable,
@@ -47,7 +51,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         jetbrainsMono.variable,
       )}
     >
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          storageKey="chomp:theme"
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

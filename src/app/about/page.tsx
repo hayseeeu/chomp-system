@@ -67,7 +67,7 @@ export default function AboutPage() {
                   <span
                     className={
                       fact.accent
-                        ? "font-display text-[28px] tracking-[-0.03em] text-primary uppercase"
+                        ? "font-display text-[28px] tracking-[-0.03em] text-accent-text uppercase"
                         : "text-xl font-extrabold text-foreground"
                     }
                   >
@@ -115,7 +115,7 @@ export default function AboutPage() {
           className="mx-auto grid max-w-[1440px] grid-cols-1 gap-14 px-6 py-16 sm:px-10 lg:grid-cols-[1fr_560px] lg:py-16"
         >
           <div>
-            <h2 className="-ml-[0.04em] font-display text-[clamp(40px,6vw,72px)] leading-[0.9] tracking-[-0.04em] text-primary uppercase">
+            <h2 className="-ml-[0.04em] font-display text-[clamp(40px,6vw,72px)] leading-[0.9] tracking-[-0.04em] text-accent-text uppercase">
               Say
               <br />
               something
@@ -138,7 +138,7 @@ export default function AboutPage() {
                 </span>
                 {/* text-base keeps the real address on one line at 390px —
                     the design's 30px display size only fits from sm: up. */}
-                <span className="font-display text-base tracking-[-0.03em] text-primary sm:text-[30px]">
+                <span className="font-display text-base tracking-[-0.03em] text-accent-text sm:text-[30px]">
                   {EMAIL}
                 </span>
               </span>

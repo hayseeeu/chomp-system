@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { ChompMark } from "@/components/site/chomp-mark";
+import { ThemeToggle } from "@/components/site/theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -57,13 +58,14 @@ export function SiteHeader({ active, cta = false }: SiteHeaderProps) {
             className={cn(
               "font-sans text-[13px] font-bold tracking-[0.04em] uppercase transition-colors duration-90 ease-out",
               active === link.key
-                ? "border-b-2 border-primary pb-0.5 text-primary"
-                : "text-foreground hover:text-primary",
+                ? "border-b-2 border-primary pb-0.5 text-accent-text"
+                : "text-foreground hover:text-accent-text",
             )}
           >
             {link.label}
           </Link>
         ))}
+        <ThemeToggle />
         {cta && (
           <Button
             variant="default"
@@ -145,6 +147,7 @@ export function SiteHeader({ active, cta = false }: SiteHeaderProps) {
             </nav>
 
             <div className="mt-auto flex flex-col gap-4 px-6 pb-6">
+              <ThemeToggle className="border-primary-foreground [&_span:last-child]:text-primary-foreground" />
               <span className="font-mono text-[11px] font-semibold tracking-[0.12em] uppercase opacity-65">
                 Free · no account · no tracking
                 <br />
@@ -154,7 +157,7 @@ export function SiteHeader({ active, cta = false }: SiteHeaderProps) {
                 variant="default"
                 nativeButton={false}
                 render={<Link href="/timer" onClick={() => setOpen(false)} />}
-                className="min-h-[68px] bg-background text-primary shadow-[6px_6px_0_0_var(--secondary)] hover:text-primary"
+                className="min-h-[68px] bg-background text-accent-text shadow-[6px_6px_0_0_var(--secondary)] hover:text-accent-text"
               >
                 Chomp it
               </Button>

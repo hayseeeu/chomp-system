@@ -61,7 +61,7 @@ export default function Home() {
               <br />
               No guilt.
               <br />
-              <span className="text-primary">Go.</span>
+              <span className="text-accent-text">Go.</span>
             </h1>
             <p className="mt-8 max-w-[520px] text-lg leading-[1.5] font-medium text-foreground text-pretty">
               One button, one number, nothing to fiddle with. The screen goes
@@ -79,7 +79,7 @@ export default function Home() {
               </Button>
               <Link
                 href="/timer"
-                className="border-b-2 border-primary pb-1 font-sans text-[13px] font-extrabold tracking-[0.1em] text-foreground uppercase transition-colors duration-90 ease-out hover:text-primary"
+                className="border-b-2 border-primary pb-1 font-sans text-[13px] font-extrabold tracking-[0.1em] text-foreground uppercase transition-colors duration-90 ease-out hover:text-accent-text"
               >
                 See the quiet screen →
               </Link>
@@ -129,7 +129,7 @@ export default function Home() {
               key={f.n}
               className="border-2 border-foreground bg-card px-7 py-8 shadow-[5px_5px_0_0_var(--primary)]"
             >
-              <p className="mb-5 font-mono text-[11px] font-bold tracking-[0.14em] text-primary">
+              <p className="mb-5 font-mono text-[11px] font-bold tracking-[0.14em] text-accent-text">
                 {f.n}
               </p>
               <h3 className="mb-3 text-[32px] leading-[1.05] font-extrabold tracking-[-0.02em] text-foreground">
@@ -156,7 +156,7 @@ export default function Home() {
         </span>
         <a
           href="mailto:carandancal@gmail.com"
-          className="font-mono text-[11px] font-semibold tracking-[0.14em] text-muted-foreground uppercase hover:text-primary"
+          className="font-mono text-[11px] font-semibold tracking-[0.14em] text-muted-foreground uppercase hover:text-accent-text"
         >
           carandancal@gmail.com
         </a>

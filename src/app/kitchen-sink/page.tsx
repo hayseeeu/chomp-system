@@ -44,7 +44,7 @@ function Section({
   return (
     <section className="mx-auto max-w-[1440px] px-6 pt-16 lg:px-12 lg:pt-24">
       <div className="mb-12 flex flex-wrap items-baseline gap-5 border-b-[3px] border-foreground pb-5">
-        <span className="font-mono text-sm font-bold tracking-[2px] text-primary">
+        <span className="font-mono text-sm font-bold tracking-[2px] text-accent-text">
           {n}
         </span>
         <h2 className="type-display-2 text-foreground">{title}</h2>
@@ -70,7 +70,7 @@ function Cell({
 }) {
   return (
     <div className={cn("border-foreground/25 p-8", className)}>
-      <div className="mb-5 font-mono text-xs font-bold tracking-[1.5px] text-primary uppercase">
+      <div className="mb-5 font-mono text-xs font-bold tracking-[1.5px] text-accent-text uppercase">
         {label}
       </div>
       {children}
@@ -119,7 +119,7 @@ function Frame({
   return (
     <div>
       <div className="mb-[14px] flex flex-wrap items-baseline gap-3">
-        <span className="font-mono text-xs font-bold tracking-[1.5px] text-primary uppercase">
+        <span className="font-mono text-xs font-bold tracking-[1.5px] text-accent-text uppercase">
           {label}
         </span>
         <span className="font-mono text-xs text-muted-foreground">{note}</span>
@@ -167,7 +167,7 @@ export default function KitchenSink() {
           <p className="type-mono-xs text-muted-foreground">
             Verification page · not shipped to users
           </p>
-          <h1 className="-ml-[0.06em] mt-3 type-display-2 text-primary">
+          <h1 className="-ml-[0.06em] mt-3 type-display-2 text-accent-text">
             Kitchen sink
           </h1>
         </div>
@@ -277,7 +277,7 @@ export default function KitchenSink() {
               key={row.id}
               className="flex flex-wrap items-baseline gap-6 border-b-2 border-foreground/25 pb-6"
             >
-              <span className="w-[140px] shrink-0 font-mono text-xs tracking-[1px] text-primary">
+              <span className="w-[140px] shrink-0 font-mono text-xs tracking-[1px] text-accent-text">
                 {row.id}
               </span>
               <span className={cn("min-w-0 text-foreground", row.cls)}>
@@ -339,7 +339,9 @@ export default function KitchenSink() {
               <div>
                 <div className="mb-2 flex justify-between font-mono text-xs tracking-[1px] text-muted-foreground uppercase">
                   <span id="ks-vol">Volume</span>
-                  <span className="text-primary tabular-nums">{volume}%</span>
+                  <span className="text-accent-text tabular-nums">
+                    {volume}%
+                  </span>
                 </div>
                 <Slider
                   aria-labelledby="ks-vol"
@@ -413,7 +415,7 @@ export default function KitchenSink() {
               <Card className="min-w-[170px] flex-1">
                 <CardHeader>
                   <CardTitle>Today</CardTitle>
-                  <span className="font-display text-[56px] leading-none tracking-[-0.04em] text-primary">
+                  <span className="font-display text-[56px] leading-none tracking-[-0.04em] text-accent-text">
                     04
                   </span>
                   <CardDescription>chomps · 1h 40m</CardDescription>

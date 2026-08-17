@@ -14,7 +14,7 @@ export function ChompMark() {
         className="size-[34px]"
       />
       <span className="font-display text-[22px] tracking-[-0.03em] text-foreground uppercase">
-        Chomp<span className="text-primary">*</span>
+        Chomp<span className="text-accent-text">*</span>
       </span>
     </Link>
   );

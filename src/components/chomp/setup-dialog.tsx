@@ -208,7 +208,7 @@ export function SetupDialog({
 
           <div className="mt-2 flex justify-between font-mono text-xs tracking-[1px] text-muted-foreground uppercase">
             <span id="volume-label">Volume</span>
-            <span className="text-primary tabular-nums">{volume}%</span>
+            <span className="text-accent-text tabular-nums">{volume}%</span>
           </div>
           <Slider
             aria-labelledby="volume-label"

@@ -32,10 +32,10 @@ const buttonVariants = cva(
           "bg-foreground text-background shadow-[5px_5px_0_0_var(--primary)] hover:-translate-x-[3px] hover:-translate-y-[3px] hover:shadow-[8px_8px_0_0_var(--primary)] active:translate-x-[5px] active:translate-y-[5px] active:shadow-none",
         // underline only, no slab
         ghost:
-          "border-b-primary bg-transparent text-foreground hover:text-primary",
+          "border-b-primary bg-transparent text-foreground hover:text-accent-text",
         // the one on the idle screen: full width, display type
         slam: "w-full bg-primary font-display text-[28px] tracking-[-0.02em] text-primary-foreground shadow-[7px_7px_0_0_var(--secondary)] hover:-translate-x-[3px] hover:-translate-y-[3px] hover:shadow-[10px_10px_0_0_var(--secondary)] active:translate-x-[7px] active:translate-y-[7px] active:shadow-none",
-        link: "border-b-primary bg-transparent text-primary underline-offset-4 hover:underline",
+        link: "border-b-primary bg-transparent text-accent-text underline-offset-4 hover:underline",
       },
       size: {
         // min 48px hit target everywhere

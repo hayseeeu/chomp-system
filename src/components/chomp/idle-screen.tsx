@@ -2,6 +2,7 @@
 
 import { ChompMark } from "@/components/site/chomp-mark";
 import { SITE_HEADER_ROW_CLASS } from "@/components/site/site-header";
+import { ThemeToggle } from "@/components/site/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { PRESETS } from "@/lib/chomp/types";
 import { cn } from "@/lib/utils";
@@ -40,15 +41,18 @@ export function IdleScreen({
     <div className="flex min-h-svh flex-col">
       <header className={SITE_HEADER_ROW_CLASS}>
         <ChompMark />
-        <p className="font-mono text-xs tracking-[1px] text-muted-foreground uppercase tabular-nums">
-          {summary}
-        </p>
+        <div className="flex items-center gap-6">
+          <p className="font-mono text-xs tracking-[1px] text-muted-foreground uppercase tabular-nums">
+            {summary}
+          </p>
+          <ThemeToggle />
+        </div>
       </header>
 
       <main className="flex flex-1 flex-col px-5 py-8 pb-[calc(112px_+_env(safe-area-inset-bottom))] sm:px-6 sm:py-10 sm:pb-10 lg:p-8">
         {/* -0.05em pulls the glyph edge back so it optically aligns with the
           container rather than sitting inside its own side bearing. */}
-        <h1 className="-ml-[0.05em] mt-[22px] font-display text-[clamp(72px,11vw,140px)] leading-[0.85] tracking-[-0.05em] text-primary uppercase">
+        <h1 className="-ml-[0.05em] mt-[22px] font-display text-[clamp(72px,11vw,140px)] leading-[0.85] tracking-[-0.05em] text-accent-text uppercase">
           Ready
         </h1>
 

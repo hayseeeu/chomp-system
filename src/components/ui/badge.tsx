@@ -18,7 +18,7 @@ const badgeVariants = cva(
         // soot ground, muted mono — for counts and durations
         data: "bg-card font-mono text-[12px] font-semibold tracking-[0.08em] text-muted-foreground normal-case",
         ghost: "text-muted-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        link: "text-accent-text underline-offset-4 hover:underline",
       },
     },
     defaultVariants: {
